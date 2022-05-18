@@ -1,0 +1,14 @@
+@mixin Flex($d: flex, $dir: row, $v: center, $h: center) {
+  display: $d;
+  flex-direction: $dir;
+  justify-content: $h;
+  align-items: $v;
+}
+
+@mixin MaxSize($p: absolute, $t: 0, $l: 0, $w: 100%, $h: 100%) {
+  position: $p;
+  top: $t;
+  left: $l;
+  width: $w;
+  height: $h;
+}

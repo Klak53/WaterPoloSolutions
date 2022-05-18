@@ -1,0 +1,59 @@
+@use "../../shared/scss/mixins" as *;
+
+.lines {
+  @include MaxSize;
+  z-index: 1200;
+
+  &__shadows {
+    top: -0.75%;
+    left: 0.75%;
+    transform: scale(0.95);
+    filter: brightness(0) blur(5px);
+    opacity: 0.25;
+  }
+
+  &__marker {
+    stroke: rgba(0, 0, 0, 0.2);
+  }
+
+  &__marker_desc,
+  &__dimensions {
+    font-size: 0.02rem;
+    font-weight: 700;
+    letter-spacing: 0.001rem;
+  }
+
+  &__marker_desc {
+    fill: rgba(0, 0, 0, 0.33);
+    text-transform: uppercase;
+  }
+
+  &__dimensions {
+    fill: #ffffff;
+    stroke: #ffffff;
+
+    text {
+      stroke: none;
+    }
+  }
+
+  &__white {
+    fill: #ffffff;
+  }
+
+  &__red {
+    fill: #aa1c09;
+  }
+
+  &__yellow {
+    fill: #f5c400;
+  }
+
+  &__green {
+    fill: #00e000;
+  }
+
+  &__goal_net {
+    stroke: #ffffff;
+  }
+}

@@ -1,0 +1,13 @@
+@use "reset";
+@use "theme";
+@use "typography";
+@use "mixins" as *;
+
+.App {
+  @include Flex;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: var(--app-background);
+  overflow: hidden;
+}

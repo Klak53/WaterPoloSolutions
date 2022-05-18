@@ -1,0 +1,11 @@
+@use "../../shared/scss/mixins" as *;
+
+.logo {
+  @include MaxSize;
+  @include Flex;
+
+  img {
+    width: 33%;
+    opacity: 0.33;
+  }
+}

@@ -1,0 +1,9 @@
+@use "../../shared/scss/mixins" as *;
+
+.tiles {
+  @include MaxSize;
+
+  &__grid {
+    stroke: white;
+  }
+}
