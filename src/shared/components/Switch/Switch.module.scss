@@ -1,0 +1,36 @@
+.switch {
+  position: relative;
+  width: 2.75rem;
+  height: 1.6rem;
+  background: var(--primary-20);
+  border-radius: 0.75rem;
+  cursor: pointer;
+  border: 0.2rem solid var(--primary-25);
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0.9rem;
+    height: 0.9rem;
+    background: var(--primary-10);
+    top: 0.15rem;
+    left: 0.15rem;
+    border-radius: 50%;
+    transition: var(--transition);
+  }
+
+  &__checked {
+    &::after {
+      background: var(--accent);
+      left: 1.25rem;
+    }
+  }
+
+  &__disabled {
+    pointer-events: none;
+
+    &::after {
+      background: var(--primary-25);
+    }
+  }
+}

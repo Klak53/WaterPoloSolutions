@@ -1,0 +1,147 @@
+@use "../../scss/mixins" as *;
+
+.menu {
+  @include BoxShadow(0);
+  @include Flex;
+  position: absolute;
+  padding: 0.25rem;
+  background: var(--primary-10);
+  border: var(--border);
+  pointer-events: all;
+  transition: var(--transition);
+
+  &__close {
+    @include Flex;
+    position: absolute;
+    color: var(--text-light);
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.75);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+  }
+
+  &__top,
+  &__bottom {
+    height: 4rem;
+    min-width: 4rem;
+  }
+
+  &__left,
+  &__right {
+    width: 4rem;
+    min-height: 4rem;
+    flex-direction: column;
+  }
+
+  &__top {
+    top: -3.5rem;
+    border-radius: 0 0 var(--radius-m) var(--radius-m);
+    border-top: none;
+
+    .menu__close {
+      top: 4.5rem;
+    }
+  }
+
+  &__right {
+    right: -3.5rem;
+    border-radius: var(--radius-m) 0 0 var(--radius-m);
+    border-right: none;
+
+    .menu__close {
+      right: 4.5rem;
+    }
+  }
+
+  &__bottom {
+    bottom: -3.5rem;
+    border-radius: var(--radius-m) var(--radius-m) 0 0;
+    border-bottom: none;
+
+    .menu__close {
+      bottom: 4.5rem;
+    }
+  }
+
+  &__left {
+    left: -3.5rem;
+    border-radius: 0 var(--radius-m) var(--radius-m) 0;
+    border-left: none;
+
+    .menu__close {
+      left: 4.5rem;
+    }
+  }
+
+  &__open {
+    @include BoxShadow(8);
+
+    &.menu__top {
+      top: 0;
+    }
+
+    &.menu__right {
+      right: 0;
+    }
+
+    &.menu__bottom {
+      bottom: 0;
+    }
+
+    &.menu__left {
+      left: 0;
+    }
+  }
+}
+
+.menu_item {
+  @include Flex;
+  color: var(--text-light);
+  border-radius: var(--radius-s);
+  min-width: 3rem;
+  min-height: 3rem;
+  margin: 0.25rem;
+  cursor: pointer;
+  border: 0.2rem solid transparent;
+
+  svg {
+    @include Flex;
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  &:hover,
+  &__active {
+    color: var(--accent);
+    background: var(--primary-20);
+    border-color: var(--primary-25);
+  }
+
+  &:hover {
+    .menu_item__description {
+      display: flex;
+    }
+  }
+
+  &__description {
+    @include MaxSize($p: fixed);
+    @include Flex;
+    pointer-events: none;
+    user-select: none;
+    display: none;
+
+    &__card {
+      @include BoxShadow(8);
+      @include Flex;
+      background: var(--primary-10);
+      color: var(--text-light);
+      padding: 2rem;
+      height: 4rem;
+      border-radius: var(--radius-m);
+      border: var(--border);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+  }
+}

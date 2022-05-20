@@ -1,0 +1,14 @@
+@use "../../shared/scss/mixins" as *;
+
+.login {
+  &__links {
+    @include Flex;
+    flex-direction: column;
+    width: 100%;
+
+    & :first-child {
+      align-self: flex-end;
+      margin-top: 2rem;
+    }
+  }
+}

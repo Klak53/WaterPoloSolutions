@@ -1,0 +1,77 @@
+@use "../../scss/mixins" as *;
+
+.floating_panel {
+  @include BoxShadow(8);
+  position: absolute;
+  background: var(--primary-10);
+  user-select: none;
+  border-radius: var(--radius-m);
+  border: var(--border);
+  width: 20rem;
+  color: var(--text-light);
+  z-index: 0;
+  pointer-events: all;
+
+  &__header {
+    @include Flex($h: space-between);
+    padding: 0.75rem 0.5rem 0.75rem 1rem;
+    cursor: move;
+    background: var(--primary-20);
+    border-radius: var(--radius-m) var(--radius-m) 0 0;
+  }
+
+  &__title,
+  &__close {
+    @include Flex;
+    line-height: 1;
+  }
+
+  &__title {
+    @include Flex;
+    text-transform: uppercase;
+    color: var(--accent);
+
+    svg {
+      @include Flex;
+      line-height: 1;
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__close {
+    color: var(--danger);
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &__content {
+    padding: 0.5rem 0;
+  }
+
+  &__footer {
+    text-align: center;
+    font-size: 0.875rem;
+    margin: 0.5rem;
+    margin-top: 0;
+    padding: 0.5rem;
+    background: var(--primary-20);
+    border-radius: var(--radius-s);
+  }
+}
+
+.floating_panel__card {
+  @include Flex($h: space-between);
+  margin: 0 0.5rem;
+  padding: 0.75rem;
+  height: 3.5rem;
+  text-transform: uppercase;
+  border: 0.2rem solid transparent;
+  border-radius: var(--radius-s);
+
+  &:hover {
+    border-color: var(--primary-25);
+    background: var(--primary-20);
+    color: var(--accent);
+  }
+}

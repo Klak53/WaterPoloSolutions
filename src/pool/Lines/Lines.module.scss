@@ -3,6 +3,7 @@
 .lines {
   @include MaxSize;
   z-index: 1200;
+  pointer-events: none;
 
   &__shadows {
     top: -0.75%;

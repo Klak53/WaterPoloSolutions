@@ -1,0 +1,31 @@
+.logo {
+  height: inherit;
+  width: inherit;
+  fill: #0b84da;
+
+  .wordmark {
+    fill: var(--text-dark);
+  }
+}
+
+.logo__alt {
+  .wordmark {
+    fill: var(--text-light);
+  }
+}
+
+.logo__positive {
+  fill: var(--text-dark);
+
+  .wordmark {
+    fill: var(--text-dark);
+  }
+}
+
+.logo__negative {
+  fill: var(--text-light);
+
+  .wordmark {
+    fill: var(--text-light);
+  }
+}

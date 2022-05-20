@@ -1,0 +1,42 @@
+@use "../../scss/mixins" as *;
+
+.input {
+  position: relative;
+  width: 100%;
+  height: 3rem;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  &__element {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    border: none;
+    background: var(--primary-25);
+    color: var(--text-light);
+    font-size: 1rem;
+    border-radius: var(--radius-s);
+    letter-spacing: inherit;
+
+    &::placeholder {
+      color: var(--primary-60);
+    }
+
+    &__password {
+      padding-right: 3rem;
+    }
+  }
+
+  &__show_password {
+    @include Flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3rem;
+    height: 100%;
+    cursor: pointer;
+    color: var(--primary-60);
+  }
+}

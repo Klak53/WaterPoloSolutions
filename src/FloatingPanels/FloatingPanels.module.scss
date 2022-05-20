@@ -1,0 +1,8 @@
+@use "../shared/scss/mixins" as *;
+
+.floating_panels {
+  @include Flex;
+  @include MaxSize;
+  z-index: 3000;
+  pointer-events: none;
+}

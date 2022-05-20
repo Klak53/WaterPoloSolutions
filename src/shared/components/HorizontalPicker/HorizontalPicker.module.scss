@@ -1,0 +1,49 @@
+@use "../../scss/mixins" as *;
+
+.horizontal_picker {
+  @include Flex;
+  position: relative;
+  background: var(--primary-20);
+  border: 0.2rem solid var(--primary-25);
+  min-width: 8rem;
+  height: 2.2rem;
+  border-radius: 1.1rem;
+  color: var(--text-light);
+
+  &__content {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: none;
+  }
+
+  &__disabled {
+    pointer-events: none;
+    color: var(--primary-35);
+  }
+
+  &__left,
+  &__right {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  &__left {
+    @include Flex($h: flex-start);
+    border-radius: 1.1rem 0 0 1.1rem;
+    left: 0;
+  }
+
+  &__right {
+    @include Flex($h: flex-end);
+    border-radius: 0 1.1rem 1.1rem 0;
+    right: 0;
+  }
+}

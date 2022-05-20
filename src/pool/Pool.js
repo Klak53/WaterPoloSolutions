@@ -1,5 +1,6 @@
 import styles from "./Pool.module.scss";
 
+import Ripples from "./Ripples/Ripples";
 import Water from "./Water/Water";
 import Waves from "./Waves/Waves";
 import Tiles from "./Tiles/Tiles";
@@ -13,12 +14,14 @@ const Pool = () => {
 
   return (
     <div className={styles.pool}>
-      <Water>
-        {waves && <Waves />}
-        <Tiles />
-        <Logo />
-        {shadows && <Lines shadows />}
-      </Water>
+      <Ripples>
+        <Water>
+          {waves && <Waves />}
+          <Tiles />
+          <Logo />
+          {shadows && <Lines shadows />}
+        </Water>
+      </Ripples>
       <Lines />
     </div>
   );

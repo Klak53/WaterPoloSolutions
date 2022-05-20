@@ -3,9 +3,19 @@ import styles from "./Lines.module.scss";
 import { usePool } from "../../shared/contexts/PoolContext";
 
 const Lines = ({ shadows }) => {
-  const { poolLength, poolWidth, markers, markersDesc, centerLine, dimensions } = usePool();
+  const {
+    poolLength,
+    poolWidth,
+    markers,
+    markersDesc,
+    centerLine,
+    dimensions,
+  } = usePool();
 
-  const length = poolLength + (poolLength - poolWidth > 15 ? 25 : 20) - (poolLength - poolWidth);
+  const length =
+    poolLength +
+    (poolLength - poolWidth > 15 ? 25 : 20) -
+    (poolLength - poolWidth);
   const width = length * 0.5625;
   const markerThickness = length * 0.00075;
   const dimensionThincknes = length * 0.0015;
@@ -15,11 +25,19 @@ const Lines = ({ shadows }) => {
   const goalNetThickness = width * 0.001;
   const goalNetDensity = 0.25;
 
-  const drawMarker = (x1, y1, x2, y2) => <line x1={x1} y1={y1} x2={x2} y2={y2} />;
+  const drawMarker = (x1, y1, x2, y2) => (
+    <line x1={x1} y1={y1} x2={x2} y2={y2} />
+  );
 
   const drawMarkerDesc = (x, y, text) => {
     return (
-      <text textAnchor="middle" dominantBaseline="middle" transform={`rotate(-90, ${x} ${y})`} x={x} y={y}>
+      <text
+        textAnchor="middle"
+        dominantBaseline="middle"
+        transform={`rotate(-90, ${x} ${y})`}
+        x={x}
+        y={y}
+      >
         {text}
       </text>
     );
@@ -70,18 +88,34 @@ const Lines = ({ shadows }) => {
         {verticalGoalLines.map((line, index) => (
           <line
             key={index}
-            x1={side === "home" ? length / 2 - poolLength / 2 - line - goalNetThickness : length / 2 + poolLength / 2 + line + goalNetThickness}
+            x1={
+              side === "home"
+                ? length / 2 - poolLength / 2 - line - goalNetThickness
+                : length / 2 + poolLength / 2 + line + goalNetThickness
+            }
             y1={width / 2 - goalWidth / 2}
-            x2={side === "home" ? length / 2 - poolLength / 2 - line - goalNetThickness : length / 2 + poolLength / 2 + line + goalNetThickness}
+            x2={
+              side === "home"
+                ? length / 2 - poolLength / 2 - line - goalNetThickness
+                : length / 2 + poolLength / 2 + line + goalNetThickness
+            }
             y2={width / 2 + goalWidth / 2}
           />
         ))}
         {horizontalGoalLines.map((line, index) => (
           <line
             key={index}
-            x1={side === "home" ? length / 2 - poolLength / 2 - goalDepth : length / 2 + poolLength / 2}
+            x1={
+              side === "home"
+                ? length / 2 - poolLength / 2 - goalDepth
+                : length / 2 + poolLength / 2
+            }
             y1={width / 2 - goalWidth / 2 + line}
-            x2={side === "home" ? length / 2 - poolLength / 2 : length / 2 + poolLength / 2 + goalDepth}
+            x2={
+              side === "home"
+                ? length / 2 - poolLength / 2
+                : length / 2 + poolLength / 2 + goalDepth
+            }
             y2={width / 2 - goalWidth / 2 + line}
           />
         ))}
@@ -90,22 +124,65 @@ const Lines = ({ shadows }) => {
   };
 
   return (
-    <svg className={`${styles.lines} ${shadows ? styles.lines__shadows : undefined}`} viewBox={`0 0 ${length} ${width}`}>
+    <svg
+      className={`${styles.lines} ${
+        shadows ? styles.lines__shadows : undefined
+      }`}
+      viewBox={`0 0 ${length} ${width}`}
+    >
       {/* MARKERS */}
       {markers && !shadows && (
-        <g className={styles.lines__marker} strokeWidth={markerThickness} strokeDasharray="0.25, 0.25">
-          {drawMarker(length / 2 - poolLength / 2 + 2, 0, length / 2 - poolLength / 2 + 2, width)}
-          {drawMarker(length / 2 - poolLength / 2 + 5, 0, length / 2 - poolLength / 2 + 5, width)}
-          {drawMarker(length / 2 - poolLength / 2 + 6, 0, length / 2 - poolLength / 2 + 6, width)}
-          {drawMarker(length / 2 + poolLength / 2 - 2, 0, length / 2 + poolLength / 2 - 2, width)}
-          {drawMarker(length / 2 + poolLength / 2 - 5, 0, length / 2 + poolLength / 2 - 5, width)}
-          {drawMarker(length / 2 + poolLength / 2 - 6, 0, length / 2 + poolLength / 2 - 6, width)}
+        <g
+          className={styles.lines__marker}
+          strokeWidth={markerThickness}
+          strokeDasharray="0.25, 0.25"
+        >
+          {drawMarker(
+            length / 2 - poolLength / 2 + 2,
+            0,
+            length / 2 - poolLength / 2 + 2,
+            width
+          )}
+          {drawMarker(
+            length / 2 - poolLength / 2 + 5,
+            0,
+            length / 2 - poolLength / 2 + 5,
+            width
+          )}
+          {drawMarker(
+            length / 2 - poolLength / 2 + 6,
+            0,
+            length / 2 - poolLength / 2 + 6,
+            width
+          )}
+          {drawMarker(
+            length / 2 + poolLength / 2 - 2,
+            0,
+            length / 2 + poolLength / 2 - 2,
+            width
+          )}
+          {drawMarker(
+            length / 2 + poolLength / 2 - 5,
+            0,
+            length / 2 + poolLength / 2 - 5,
+            width
+          )}
+          {drawMarker(
+            length / 2 + poolLength / 2 - 6,
+            0,
+            length / 2 + poolLength / 2 - 6,
+            width
+          )}
         </g>
       )}
 
       {/* CENTER LINE */}
       {centerLine && !shadows && (
-        <g className={styles.lines__marker} strokeWidth={markerThickness} strokeDasharray="0.25, 0.25">
+        <g
+          className={styles.lines__marker}
+          strokeWidth={markerThickness}
+          strokeDasharray="0.25, 0.25"
+        >
           {drawMarker(length / 2, 0, length / 2, width)}
         </g>
       )}
@@ -114,34 +191,103 @@ const Lines = ({ shadows }) => {
       {markers && markersDesc && !shadows && (
         <g className={styles.lines__marker_desc}>
           {/* HOME */}
-          {drawMarkerDesc(length / 2 - poolLength / 2 + 2 - 0.3, width / 2 - poolWidth / 2 + 1.75, "2 meter line")}
-          {drawMarkerDesc(length / 2 - poolLength / 2 + 2 - 0.3, width / 2 + poolWidth / 2 - 1.75, "2 meter line")}
-          {drawMarkerDesc(length / 2 - poolLength / 2 + 5 - 0.3, width / 2 - poolWidth / 2 + 1.75, "5 meter line")}
-          {drawMarkerDesc(length / 2 - poolLength / 2 + 5 - 0.3, width / 2 + poolWidth / 2 - 1.75, "5 meter line")}
-          {drawMarkerDesc(length / 2 - poolLength / 2 + 6 - 0.3, width / 2 - poolWidth / 2 + 1.75, "6 meter line")}
-          {drawMarkerDesc(length / 2 - poolLength / 2 + 6 - 0.3, width / 2 + poolWidth / 2 - 1.75, "6 meter line")}
+          {drawMarkerDesc(
+            length / 2 - poolLength / 2 + 2 - 0.3,
+            width / 2 - poolWidth / 2 + 1.75,
+            "2 meter line"
+          )}
+          {drawMarkerDesc(
+            length / 2 - poolLength / 2 + 2 - 0.3,
+            width / 2 + poolWidth / 2 - 1.75,
+            "2 meter line"
+          )}
+          {drawMarkerDesc(
+            length / 2 - poolLength / 2 + 5 - 0.3,
+            width / 2 - poolWidth / 2 + 1.75,
+            "5 meter line"
+          )}
+          {drawMarkerDesc(
+            length / 2 - poolLength / 2 + 5 - 0.3,
+            width / 2 + poolWidth / 2 - 1.75,
+            "5 meter line"
+          )}
+          {drawMarkerDesc(
+            length / 2 - poolLength / 2 + 6 - 0.3,
+            width / 2 - poolWidth / 2 + 1.75,
+            "6 meter line"
+          )}
+          {drawMarkerDesc(
+            length / 2 - poolLength / 2 + 6 - 0.3,
+            width / 2 + poolWidth / 2 - 1.75,
+            "6 meter line"
+          )}
           {/* AWAY */}
-          {drawMarkerDesc(length / 2 + poolLength / 2 - 2 - 0.3, width / 2 - poolWidth / 2 + 1.75, "2 meter line")}
-          {drawMarkerDesc(length / 2 + poolLength / 2 - 2 - 0.3, width / 2 + poolWidth / 2 - 1.75, "2 meter line")}
-          {drawMarkerDesc(length / 2 + poolLength / 2 - 5 - 0.3, width / 2 - poolWidth / 2 + 1.75, "5 meter line")}
-          {drawMarkerDesc(length / 2 + poolLength / 2 - 5 - 0.3, width / 2 + poolWidth / 2 - 1.75, "5 meter line")}
-          {drawMarkerDesc(length / 2 + poolLength / 2 - 6 - 0.3, width / 2 - poolWidth / 2 + 1.75, "6 meter line")}
-          {drawMarkerDesc(length / 2 + poolLength / 2 - 6 - 0.3, width / 2 + poolWidth / 2 - 1.75, "6 meter line")}
+          {drawMarkerDesc(
+            length / 2 + poolLength / 2 - 2 - 0.3,
+            width / 2 - poolWidth / 2 + 1.75,
+            "2 meter line"
+          )}
+          {drawMarkerDesc(
+            length / 2 + poolLength / 2 - 2 - 0.3,
+            width / 2 + poolWidth / 2 - 1.75,
+            "2 meter line"
+          )}
+          {drawMarkerDesc(
+            length / 2 + poolLength / 2 - 5 - 0.3,
+            width / 2 - poolWidth / 2 + 1.75,
+            "5 meter line"
+          )}
+          {drawMarkerDesc(
+            length / 2 + poolLength / 2 - 5 - 0.3,
+            width / 2 + poolWidth / 2 - 1.75,
+            "5 meter line"
+          )}
+          {drawMarkerDesc(
+            length / 2 + poolLength / 2 - 6 - 0.3,
+            width / 2 - poolWidth / 2 + 1.75,
+            "6 meter line"
+          )}
+          {drawMarkerDesc(
+            length / 2 + poolLength / 2 - 6 - 0.3,
+            width / 2 + poolWidth / 2 - 1.75,
+            "6 meter line"
+          )}
         </g>
       )}
 
       {/* DIMENSIONS */}
       {dimensions && !shadows && (
-        <g className={styles.lines__dimensions} strokeWidth={dimensionThincknes}>
-          <marker id="rightArrow" markerWidth={6} markerHeight={4} refX={0} refY={2} orient="auto">
+        <g
+          className={styles.lines__dimensions}
+          strokeWidth={dimensionThincknes}
+        >
+          <marker
+            id="rightArrow"
+            markerWidth={6}
+            markerHeight={4}
+            refX={0}
+            refY={2}
+            orient="auto"
+          >
             <polygon points="0 0, 6 2, 0 4" />
           </marker>
 
-          <marker id="leftArrow" markerWidth={6} markerHeight={4} refX={6} refY={2} orient="auto">
+          <marker
+            id="leftArrow"
+            markerWidth={6}
+            markerHeight={4}
+            refX={6}
+            refY={2}
+            orient="auto"
+          >
             <polygon points="6 0, 6 4, 0 2" />
           </marker>
 
-          <text textAnchor="middle" x={length / 2} y={width / 2 + poolWidth / 2 - 1.6}>
+          <text
+            textAnchor="middle"
+            x={length / 2}
+            y={width / 2 + poolWidth / 2 - 1.6}
+          >
             {poolLength}m
           </text>
           <line
@@ -153,7 +299,14 @@ const Lines = ({ shadows }) => {
             markerEnd="url(#rightArrow)"
           />
 
-          <text textAnchor="middle" transform={`rotate(-90, ${length / 2 + poolLength / 2 - 1.3}, ${width / 2})`} x={length / 2 + poolLength / 2 - 1.3} y={width / 2}>
+          <text
+            textAnchor="middle"
+            transform={`rotate(-90, ${length / 2 + poolLength / 2 - 1.3}, ${
+              width / 2
+            })`}
+            x={length / 2 + poolLength / 2 - 1.3}
+            y={width / 2}
+          >
             {poolWidth}m
           </text>
           <line
@@ -179,41 +332,153 @@ const Lines = ({ shadows }) => {
             {drawHorizontalLine(0, length, width)}
             {/* VERTICAL LINES LEFT */}
             {drawVerticalLine(0, width, 0)}
-            {drawVerticalLine(0, width, length / 2 - poolLength / 2 - goalDepth)}
-            {drawVerticalLine(0, width / 2 - goalWidth / 2, length / 2 - poolLength / 2 - 0.3)}
-            {drawVerticalLine(width / 2 + goalWidth / 2, width, length / 2 - poolLength / 2 - 0.3)}
+            {drawVerticalLine(
+              0,
+              width,
+              length / 2 - poolLength / 2 - goalDepth
+            )}
+            {drawVerticalLine(
+              0,
+              width / 2 - goalWidth / 2,
+              length / 2 - poolLength / 2 - 0.3
+            )}
+            {drawVerticalLine(
+              width / 2 + goalWidth / 2,
+              width,
+              length / 2 - poolLength / 2 - 0.3
+            )}
             {/* VERTICAL LINES RIGHT */}
             {drawVerticalLine(0, width, length)}
-            {drawVerticalLine(0, width, length / 2 + poolLength / 2 + goalDepth)}
-            {drawVerticalLine(0, width / 2 - goalWidth / 2, length / 2 + poolLength / 2 + 0.3)}
-            {drawVerticalLine(width / 2 + goalWidth / 2, width, length / 2 + poolLength / 2 + 0.3)}
+            {drawVerticalLine(
+              0,
+              width,
+              length / 2 + poolLength / 2 + goalDepth
+            )}
+            {drawVerticalLine(
+              0,
+              width / 2 - goalWidth / 2,
+              length / 2 + poolLength / 2 + 0.3
+            )}
+            {drawVerticalLine(
+              width / 2 + goalWidth / 2,
+              width,
+              length / 2 + poolLength / 2 + 0.3
+            )}
             {/* HOME GOAL */}
-            {drawHorizontalLine(length / 2 - poolLength / 2 - goalDepth - lineThickness / 2, goalDepth + lineThickness / 2, width / 2 - goalWidth / 2)}
-            {drawHorizontalLine(length / 2 - poolLength / 2 - goalDepth - lineThickness / 2, goalDepth + lineThickness / 2, width / 2 + goalWidth / 2)}
+            {drawHorizontalLine(
+              length / 2 - poolLength / 2 - goalDepth - lineThickness / 2,
+              goalDepth + lineThickness / 2,
+              width / 2 - goalWidth / 2
+            )}
+            {drawHorizontalLine(
+              length / 2 - poolLength / 2 - goalDepth - lineThickness / 2,
+              goalDepth + lineThickness / 2,
+              width / 2 + goalWidth / 2
+            )}
             {/* AWAY GOAL */}
-            {drawHorizontalLine(length / 2 + poolLength / 2, goalDepth + lineThickness / 2, width / 2 - goalWidth / 2)}
-            {drawHorizontalLine(length / 2 + poolLength / 2, goalDepth + lineThickness / 2, width / 2 + goalWidth / 2)}
+            {drawHorizontalLine(
+              length / 2 + poolLength / 2,
+              goalDepth + lineThickness / 2,
+              width / 2 - goalWidth / 2
+            )}
+            {drawHorizontalLine(
+              length / 2 + poolLength / 2,
+              goalDepth + lineThickness / 2,
+              width / 2 + goalWidth / 2
+            )}
           </g>
           {!shadows && (
             <>
               {/* RED LINES */}
               <g className={styles.lines__red}>
-                {drawHorizontalLine(length / 2 - poolLength / 2, poolLength, width / 2 - poolWidth / 2)}
-                {drawHorizontalLine(length / 2 - poolLength / 2, poolLength, width / 2 + poolWidth / 2)}
+                {drawHorizontalLine(
+                  length / 2 - poolLength / 2,
+                  poolLength,
+                  width / 2 - poolWidth / 2
+                )}
+                {drawHorizontalLine(
+                  length / 2 - poolLength / 2,
+                  poolLength,
+                  width / 2 + poolWidth / 2
+                )}
+                {/* HOME RE-ENTRY AREA */}
+                {drawVerticalLine(
+                  width / 2 - poolWidth / 2,
+                  2,
+                  length / 2 - poolLength / 2 - goalDepth
+                )}
+                {drawVerticalLine(
+                  width / 2 - poolWidth / 2,
+                  2,
+                  length / 2 - poolLength / 2 - 0.3
+                )}
+                {drawHorizontalLine(
+                  length / 2 - poolLength / 2 - goalDepth - lineThickness,
+                  goalDepth + lineThickness - 0.3,
+                  width / 2 - poolWidth / 2 + 2
+                )}
+                {/* AWAY RE-ENTRY AREA */}
+                {drawVerticalLine(
+                  width / 2 - poolWidth / 2,
+                  2,
+                  length / 2 + poolLength / 2 + goalDepth
+                )}
+                {drawVerticalLine(
+                  width / 2 - poolWidth / 2,
+                  2,
+                  length / 2 + poolLength / 2 + 0.3
+                )}
+                {drawHorizontalLine(
+                  length / 2 + poolLength / 2 + 0.3,
+                  goalDepth + lineThickness - 0.3,
+                  width / 2 - poolWidth / 2 + 2
+                )}
               </g>
               {/* YELLOW LINES */}
               <g className={styles.lines__yellow}>
-                {drawHorizontalLine(length / 2 - poolLength / 2 + 2, 2.85, width / 2 - poolWidth / 2)}
-                {drawHorizontalLine(length / 2 - poolLength / 2 + 5.15, poolLength - 10.3, width / 2 - poolWidth / 2)}
-                {drawHorizontalLine(length / 2 + poolLength / 2 - 4.85, 2.85, width / 2 - poolWidth / 2)}
-                {drawHorizontalLine(length / 2 - poolLength / 2 + 2, 2.85, width / 2 + poolWidth / 2)}
-                {drawHorizontalLine(length / 2 - poolLength / 2 + 5.15, poolLength - 10.3, width / 2 + poolWidth / 2)}
-                {drawHorizontalLine(length / 2 + poolLength / 2 - 4.85, 2.85, width / 2 + poolWidth / 2)}
+                {drawHorizontalLine(
+                  length / 2 - poolLength / 2 + 2,
+                  2.85,
+                  width / 2 - poolWidth / 2
+                )}
+                {drawHorizontalLine(
+                  length / 2 - poolLength / 2 + 5.15,
+                  poolLength - 10.3,
+                  width / 2 - poolWidth / 2
+                )}
+                {drawHorizontalLine(
+                  length / 2 + poolLength / 2 - 4.85,
+                  2.85,
+                  width / 2 - poolWidth / 2
+                )}
+                {drawHorizontalLine(
+                  length / 2 - poolLength / 2 + 2,
+                  2.85,
+                  width / 2 + poolWidth / 2
+                )}
+                {drawHorizontalLine(
+                  length / 2 - poolLength / 2 + 5.15,
+                  poolLength - 10.3,
+                  width / 2 + poolWidth / 2
+                )}
+                {drawHorizontalLine(
+                  length / 2 + poolLength / 2 - 4.85,
+                  2.85,
+                  width / 2 + poolWidth / 2
+                )}
               </g>
               {/* GREEN LINES */}
               <g className={styles.lines__green}>
-                {drawHorizontalLine(length / 2 - poolLength / 2 + 6, poolLength - 12, width / 2 - poolWidth / 2)}
-                {drawHorizontalLine(length / 2 - poolLength / 2 + 6, poolLength - 12, width / 2 + poolWidth / 2)}
+                {drawHorizontalLine(
+                  length / 2 - poolLength / 2 + 6,
+                  poolLength - 12,
+                  width / 2 - poolWidth / 2
+                )}
+                {drawHorizontalLine(
+                  length / 2 - poolLength / 2 + 6,
+                  poolLength - 12,
+                  width / 2 + poolWidth / 2
+                )}
               </g>
             </>
           )}

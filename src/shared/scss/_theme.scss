@@ -1,9 +1,45 @@
 :root {
-  --app-background: radial-gradient(
-    circle,
-    #209fdf 0%,
-    #1d8fc9 50%,
-    #197fb3 75%,
-    #16709c 100%
-  );
+  --app-background: radial-gradient(circle, #209fdf 0%, #1d8fc9 50%, #197fb3 75%, #16709c 100%);
+
+  // COLORS
+  --primary-5: #080d12;
+  --primary-10: #0f1a24;
+  --primary-15: #172636;
+  --primary-20: #1f3347;
+  --primary-25: #264059;
+  --primary-30: #2e4d6b;
+  --primary-35: #36597d;
+  --primary-40: #3d668f;
+  --primary-45: #4573a1;
+  --primary-50: #4d80b3;
+  --primary-55: #5e8cba;
+  --primary-60: #7099c2;
+  --primary-65: #82a6c9;
+  --primary-70: #94b3d1;
+  --primary-75: #a6bfd9;
+  --primary-80: #b8cce0;
+  --primary-85: #c9d9e8;
+  --primary-90: #dbe6f0;
+  --primary-95: #edf2f7;
+
+  --accent: #f5c400;
+
+  --success: #4caa09;
+  --info: #0d93f2;
+  --warning: #ffbf00;
+  --danger: #da0b1d;
+
+  --text-light: var(--primary-90);
+  --text-dark: var(--primary-10);
+
+  // RADIUS
+  --radius-s: 0.25rem;
+  --radius-m: calc(var(--radius-s) * 2);
+  --radius-l: calc(var(--radius-s) + var(--radius-m));
+
+  // BORDER
+  --border: 0.2rem solid var(--accent);
+
+  // TRANSITION
+  --transition: 250ms ease-in-out;
 }

@@ -1,0 +1,35 @@
+@use "../../scss/mixins" as *;
+
+.checkbox {
+  @include Flex;
+  position: relative;
+  align-self: flex-start;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  input {
+    visibility: hidden;
+  }
+
+  &__mark {
+    @include Flex;
+    position: absolute;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: var(--text-light);
+    left: 0;
+    border-radius: var(--radius-s);
+    font-size: 0.75rem;
+  }
+
+  input:checked ~ &__mark {
+    background: var(--info);
+  }
+
+  &__label {
+    margin-left: 1rem;
+  }
+}
