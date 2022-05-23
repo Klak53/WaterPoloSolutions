@@ -13,13 +13,13 @@ const Pool = () => {
   const { waves, shadows } = usePool();
 
   return (
-    <div className={styles.pool}>
+    <div className={styles.pool} id="pool">
       <Ripples>
         <Water>
           {waves && <Waves />}
           <Tiles />
           <Logo />
-          {shadows && <Lines shadows />}
+          <div data-html2canvas-ignore>{shadows && <Lines shadows />}</div>
         </Water>
       </Ripples>
       <Lines />

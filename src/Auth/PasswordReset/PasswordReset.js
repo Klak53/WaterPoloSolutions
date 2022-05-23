@@ -18,7 +18,7 @@ const PasswordReset = () => {
       <Form onSubmit={handlePasswordReset}>
         <p className={styles.password_reset__desc}>Please enter your email address and we'll send you a link to reset your password.</p>
         <Input id="email" type="email" placeholder="Email" />
-        <Button wide title="Reset Password" type="submit" />
+        <Button wide light title="Reset Password" type="submit" />
       </Form>
 
       <Divider />

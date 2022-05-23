@@ -14,14 +14,17 @@
 
   &__header {
     @include Flex($h: space-between);
-    padding: 0.75rem 0.5rem 0.75rem 1rem;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    height: 3rem;
     cursor: move;
     background: var(--primary-20);
     border-radius: var(--radius-m) var(--radius-m) 0 0;
   }
 
   &__title,
-  &__close {
+  &__close,
+  &__title svg {
     @include Flex;
     line-height: 1;
   }
@@ -32,8 +35,6 @@
     color: var(--accent);
 
     svg {
-      @include Flex;
-      line-height: 1;
       margin-right: 0.5rem;
     }
   }
@@ -43,26 +44,43 @@
     cursor: pointer;
     width: 2rem;
     height: 2rem;
+    border-radius: var(--radius-s);
   }
 
   &__content {
-    padding: 0.5rem 0;
+    padding: 0.5rem;
   }
 
   &__footer {
     text-align: center;
     font-size: 0.875rem;
-    margin: 0.5rem;
-    margin-top: 0;
+    margin-top: 0.5rem;
     padding: 0.5rem;
     background: var(--primary-20);
     border-radius: var(--radius-s);
+
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+
+    ul li {
+      @include Flex($h: space-between);
+
+      &:not(:last-of-type) {
+        margin-bottom: 0.5rem;
+      }
+
+      span {
+        text-transform: capitalize;
+        font-weight: 600;
+        color: var(--info);
+      }
+    }
   }
 }
 
 .floating_panel__card {
   @include Flex($h: space-between);
-  margin: 0 0.5rem;
   padding: 0.75rem;
   height: 3.5rem;
   text-transform: uppercase;

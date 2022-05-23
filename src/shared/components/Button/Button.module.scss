@@ -1,22 +1,36 @@
 @use "../../scss/mixins" as *;
 
 .button {
+  @include Flex;
   position: relative;
   background: var(--info);
   padding: 1rem;
   height: 3rem;
-  font-size: 1rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-weight: 600;
   letter-spacing: inherit;
   line-height: 1;
   color: var(--text-light);
   border-radius: var(--radius-s);
   cursor: pointer;
 
+  svg {
+    margin-right: 0.5rem;
+  }
+
   &__wide {
     width: 100%;
   }
 
-  &:hover {
+  &__light {
+    font-size: 1rem;
+    text-transform: capitalize;
+    font-weight: 400;
+  }
+
+  &:hover,
+  &:focus {
     &::after {
       @include MaxSize;
       content: "";
@@ -29,5 +43,9 @@
     &::after {
       background: none;
     }
+  }
+
+  &__success {
+    background: var(--success);
   }
 }

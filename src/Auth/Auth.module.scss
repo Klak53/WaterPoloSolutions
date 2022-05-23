@@ -3,7 +3,7 @@
 .auth {
   @include MaxSize;
   background: rgba(0, 0, 0, 0.66);
-  z-index: 9000;
+  z-index: 8000;
 
   &__outter_panel,
   &__inner_panel {
@@ -15,11 +15,11 @@
 
   &__outter_panel {
     background: var(--accent);
-    max-width: 48rem;
+    max-width: 50%;
   }
 
   &__inner_panel {
     background: var(--primary-10);
-    max-width: 46rem;
+    max-width: calc(100% - 2rem);
   }
 }

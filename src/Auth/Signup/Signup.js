@@ -21,9 +21,9 @@ const Signup = () => {
         <Input id="password" type="password" placeholder="Password" />
         <Input id="rePassword" type="password" placeholder="Confirm Password" />
         <p className={styles.signup__desc}>
-          By clicking Sign Up you confirm that you are at least 13 years old and that    you agree with our <Link to="#">Terms and Conditions</Link> and <Link to="#">Privacy Statement</Link>
+          By clicking Sign Up you confirm that you are at least 13 years old and that you agree with our <Link to="#">Terms and Conditions</Link> and <Link to="#">Privacy Statement</Link>
         </p>
-        <Button wide title="Sign up" type="submit" />
+        <Button wide light title="Sign up" type="submit" />
       </Form>
 
       <Divider />

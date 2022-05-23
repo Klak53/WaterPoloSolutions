@@ -8,9 +8,9 @@ const PoolContextProvider = ({ children }) => {
   const [poolLength, setPoolLength] = useState(25);
   const [poolWidth, setPoolWidth] = useState(15);
 
-  const [waves, setWaves] = useState(true);
-  const [ripples, setRipples] = useState(true);
-  const [shadows, setShadows] = useState(true);
+  const [waves, setWaves] = useState(false);
+  const [ripples, setRipples] = useState(false);
+  const [shadows, setShadows] = useState(false);
 
   const [markers, setMarkers] = useState(true);
   const [markersDesc, setMarkersDesc] = useState(true);

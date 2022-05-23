@@ -20,7 +20,7 @@ const Login = () => {
         <Input id="email" type="email" placeholder="Email" />
         <Input id="password" type="password" placeholder="Password" />
         <Checkbox id="rememberUser" name="rememberUser" label="Stay signed in" />
-        <Button wide title="Sign In" type="submit" />
+        <Button wide light title="Sign In" type="submit" />
       </Form>
 
       <div className={styles.login__links}>

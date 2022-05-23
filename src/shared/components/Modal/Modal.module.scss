@@ -1,0 +1,55 @@
+@use "../../scss/mixins" as *;
+
+.modal {
+  @include MaxSize;
+  @include Flex;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9000;
+  user-select: none;
+
+  &__body {
+    @include BoxShadow(8);
+    width: calc(100% - 4rem);
+    max-width: 48rem;
+    background: var(--primary-10);
+    border-radius: var(--radius-l);
+    border: var(--border);
+  }
+
+  &__header {
+    @include Flex($h: space-between);
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    height: 3rem;
+    background: var(--primary-20);
+    border-radius: var(--radius-m) var(--radius-m) 0 0;
+  }
+
+  &__close,
+  &__title,
+  &__title svg {
+    @include Flex;
+    line-height: 1;
+  }
+
+  &__title {
+    color: var(--text-light);
+    text-transform: uppercase;
+
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__close {
+    color: var(--danger);
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-s);
+  }
+
+  &__content {
+    padding: 0.5rem;
+  }
+}

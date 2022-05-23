@@ -13,6 +13,10 @@ export const FloatingPanelCard = ({ title, children }) => {
   );
 };
 
+export const FloatingPanelFooter = ({ children }) => {
+  return <div className={styles.floating_panel__footer}>{children}</div>;
+};
+
 const FloatingPanel = ({ id, icon, title, footer, forwarderRef, visible, close, children }) => {
   const dragControls = useDragControls();
 
@@ -55,7 +59,6 @@ const FloatingPanel = ({ id, icon, title, footer, forwarderRef, visible, close, 
         </div>
       </div>
       <div className={styles.floating_panel__content}>{children}</div>
-      {footer && <div className={styles.floating_panel__footer}>{footer}</div>}
     </motion.div>
   );
 };

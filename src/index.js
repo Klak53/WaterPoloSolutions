@@ -9,6 +9,7 @@ import styles from "./index.module.scss";
 import PoolContext from "./shared/contexts/PoolContext";
 import AppContext from "./shared/contexts/AppContext";
 
+import DeviceOptimization from "./DeviceOptimization/DeviceOptimization";
 import Pool from "./Pool/Pool";
 import Auth from "./Auth/Auth";
 import Menus from "./Menus/Menus";
@@ -19,6 +20,7 @@ const App = () => {
 
   return (
     <div className={styles.water_polo_solutions}>
+      <DeviceOptimization />
       <Pool />
 
       <AnimatePresence exitBeforeEnter>
